@@ -1,0 +1,72 @@
+Lista de Exercícios
+
+Ex - 01: 
+Criar um bloco PL-SQL para calcular o valor do novo salário mínimo que 
+deverá ser de 25% em cima do atual, que é de R$???.
+
+DECLARE
+    salatual NUMBER(8, 2) := &salario;
+    salnovo  salatual%TYPE := 1.25 * salatual;
+BEGIN
+    dbms_output.put_line('O novo salário do funcionário é: ' || salnovo);
+END;
+
+Ex - 02:
+Criar um bloco PL-SQL para calcular o valor em REAIS de 45 dólares, sendo que o valor do câmbio a ser considerado 
+é de R$ ??? no qual estes valores deverão ser constantes dentro do bloco.
+
+DECLARE
+    valdolar NUMBER(4, 2) := 5.15;
+BEGIN
+    dbms_output.put_line('45 dólares é igual a R$' || valdolar * 45);
+END;
+
+
+Ex - 03:
+Criar um bloco PL-SQL para converter em REAIS os dólares informados, sendo que o valor do Câmbio a ser considerado é de ????
+
+DECLARE
+    val_dol NUMBER(4, 2) := 5.15;
+    dol_informado number(8,2) := &valor;
+    conversao dol_informado%type := dol_informado * val_dol;
+BEGIN
+    dbms_output.put_line(dol_informado || ' dólares convertidos em reais é R$' || conversao);
+END;
+
+Ex - 04:
+Criar um bloco PL-SQL para calcular o valor das parcelas de uma compra de um carro, nas seguintes condições: 
+OBSERVAÇÃO: 
+1 - Parcelas para aquisição em 10 pagamentos. 
+2 - O valor total dos juros é de 3% e deverá ser aplicado sobre o 
+montante financiado.
+3 – No final informar o valor de cada parcela.
+
+DECLARE
+    val_carro   NUMBER(9, 2) := &valor;
+    val_cjuros  val_carro%TYPE := val_carro * 1.03;
+    val_parcela NUMBER(8, 2) := val_cjuros / 10;
+BEGIN
+    dbms_output.put_line('O valor do carro é R$' || val_carro);
+    dbms_output.put_line('Com o juros, o valor final é R$' || val_cjuros);
+    dbms_output.put_line('Divido em dez parcelas, cada uma custará R$' || val_parcela);
+END;
+
+Ex - 05:
+Criar um bloco PL-SQL para calcular o valor de cada parcela de uma compra de um carro, nas seguintes condições:
+- Parcelas para aquisição em 6 pagamentos. 
+- Parcelas para aquisição em 12 pagamentos. 
+- Parcelas para aquisição em 18 pagamentos. 
+OBSERVAÇÃO: 
+1 – Deverá ser dada uma entrada de 20% do valor da compra. 
+2 – Deverá ser aplicada uma taxa juros, no saldo restante, nas 
+seguintes condições: 
+3 – No final informar o valor das parcelas para as 3 formas de 
+pagamento, com o Valor de aquisição de 10.000.
+A – Pagamento em 6 parcelas: 10%. 
+B – Pagamento em 12 parcelas: 15%. 
+C – Pagamento em 18 parcelas: 20%.
+
+declare
+val_carro   NUMBER(9, 2) := &valor;
+val_entrada val_carro%type := val_carro * 0.2;
+val_rest val_carro%type := val_carro * 0.8;
